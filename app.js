@@ -30,7 +30,6 @@ io.on("connection", (socket) => {
     
   socket.on("customObj", (obj) => {   
     io.sockets.emit("hello", `Hello there ${obj.type} device`)
-    console.log("Welcome message emited")
   })
 
 
