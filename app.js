@@ -16,12 +16,20 @@ let arrayOfClients = [];
 
 // const mainClientId;
 
+
 io.on("connection", (socket) => {
   console.log("New client connected");
-  socket.on("customObj", (obj) => {
+  let newUser = {}
+  
+  socket.on("customObj", (obj) => {    
     arrayOfClients.push(obj)
+    newUser = obj
     console.log(arrayOfClients)
+    io.sockets.emit("hello", `Hello there ${obj.type} device`)
+    console.log("Welcome message emited")
   })
+
+
 
   socket.on("disconect", (data) => {
     console.log("DISCONNECTED", data)
