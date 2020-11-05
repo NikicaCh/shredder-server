@@ -32,6 +32,11 @@ io.on("connection", (socket) => {
     io.sockets.emit("hello", `Hello there ${obj.type} device`)
   })
 
+  socket.on("ask", (obj) => {
+    console.log(obj)
+    io.sockets.to(obj.room).emit("question", obj)
+  })
+
 
 
   socket.on("disconect", (data) => {
