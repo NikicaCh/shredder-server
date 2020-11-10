@@ -37,6 +37,10 @@ io.on("connection", (socket) => {
     io.sockets.to(obj.room).emit("question", obj)
   })
 
+  socket.on("mobile", (room) => {
+    io.sockets.to(room).emit("mobile-connected", room)
+  })
+
 
 
   socket.on("disconect", (data) => {
